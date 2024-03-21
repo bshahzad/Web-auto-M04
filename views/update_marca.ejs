@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+</head>
+<body>
+<h1> UPDATE MARCA</h1>
+<form action="/marcas/update" method="POST">
+
+    <input id="id" type="hidden" name="id" value="<%= marca.id%>">
+
+    <label for="id_nom">Nom</label>
+    <input id="id_nom" type="text" name="nom" value="<%= marca.nom%>">
+
+
+
+    <label for="fundacion">Fundacion</label>
+    <input id="fundacion" type="text" name="fundacion" value="<%= marca.fundacion%> ">
+
+
+    <label for="sede">Sede</label>
+    <input id="sede" type="text" name="sede" value="<%= marca.sede%>">
+
+    <label for="fundador">Fundador</label>
+    <input id="fundador" type="text" name="fundador"value="<%= marca.fundador%> ">
+
+    <label for="img">Imagen</label>
+    <input id="img" type="text" name="img" value="<%= marca.img%>" >
+
+    <input type="submit" value="update">
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
+</head>
+<body>
+<h1>INSERT MODELOS</h1>
+<form action="/modelos" method="POST">
+
+
+    <label for="id_nom">Nom</label>
+    <input id="id_nom" type="text" name="nom" ><br>
+
+    <label for="marca_referencia">Marca Referencia</label>
+    <select id="marca_referencia" name="marca_referencia">
+        <!-- Add option elements dynamically based on available marcas -->
+        <!-- Example options, you should replace these with actual data -->
+        <option value="marca1">Marca 1</option>
+        <option value="marca2">Marca 2</option>
+        <option value="marca3">Marca 3</option>
+        <!-- Add more options as needed -->
+    </select>
+
+
+    <label for="ano">Año</label>
+    <input id="ano" type="text" name="ano" >
+
+    <label for="tipo">Tipo</label>
+    <input id="tipo" type="text" name="tipo" >
+
+    <label for="precio">Precio</label>
+    <input id="precio" type="text" name="precio" >
+
+    <label for="img">Imagen</label>
+    <input id="img" type="text" name="img" >
+
+    <input type="submit" value="insert">
+</form>
+</body>
+</html>

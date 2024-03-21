@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<h1> Marcas List</h1>
+
+
+<li class="button-li">
+    <a href="/marcas/insert"  class="button-link">insert items</a>
+</li>
+
+
+
+
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>fundacion</th>
+        <th>sede</th>
+        <th>fundador</th>
+        <th>Imatge</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% marcas.forEach( function (marca){ %>
+
+        <tr>
+            <td> <%= marca.id %> </td>
+            <td> <%= marca.nombre %></td>
+            <td> <%= marca.fundacion %></td>
+            <td> <%= marca.sede %></td>
+            <td> <%= marca.fundador %></td>
+
+            <td class="imagen-celda">
+                <img class="imagen-marca" src="<%= marca.img %>" />
+            </td>
+
+
+            <td>
+                <a href="#" data-marca-id="<%= marca.id%>" class="action_delete">Delete</a>
+                <a href="/marcas/update/<%= marca.id%>" >Update</a>
+            </td>
+
+        </tr>
+    <% } ) %>
+
+    </tbody>
+</table>
+
+<script>
+    async function delete_marca(evt){
+        evt.preventDefault() // no sigas tu comportamiento por defecto
+        let id = $(this).data('marca-id')
+        console.log('id',id)
+        try {
+            await $.ajax({
+                url: '/api/marcas/'  + id,
+                type: 'DELETE'
+            })
+            window.location.reload()
+
+        }catch (e) {
+            console.log(e)
+            console.log('Error' + e.status + " " + e.statusText)
+        }
+    }
+
+    $(document).ready(() =>{
+        $('.action_delete').click(delete_marca)
+    });
+</script>
+
+</body>
+</html>

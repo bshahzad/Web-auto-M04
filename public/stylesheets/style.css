@@ -1,0 +1,50 @@
+
+
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.imagen-celda {
+  max-width: 200px; /* Ajusta el valor según sea necesario */
+  overflow: hidden; /* Para evitar que la imagen se salga del contenedor */
+}
+
+
+
+.imagen-marca {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Elimina espacio adicional debajo de la imagen */
+  margin: 0 auto; /* Centra la imagen horizontalmente en el contenedor */
+}
+
+/* Style for the button-like appearance */
+.button-li {
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+  list-style-type: none;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+  background-color: #2980b9;
+}
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
+    <link href="stylesheets/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Modelos List</h1>
+
+
+<li class="button-li">
+    <a href="/modelos/insert" class="button-link">insert modelos</a>
+</li>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>marca_referencia</th>
+        <th>ano</th>
+        <th>tipo</th>
+        <th>precio</th>
+        <th>Imagen</th>
+        <th>Accion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% modelos.forEach( function (modelo){ %>
+
+        <tr>
+            <td> <%= modelo.id %> </td>
+            <td> <%= modelo.nombre %></td>
+            <td> <%= modelo.marca_referencia %></td>
+            <td> <%= modelo.ano %></td>
+            <td> <%= modelo.tipo %></td>
+            <td> <%= modelo.precio %></td>
+
+            <td class="imagen-celda">
+                <img class="imagen-marca" src="<%= modelo.img %>" />
+            </td>
+
+
+            <td>
+                <a href="#" data-modelo-id="<%= modelo.id%>" class="action_delete">Delete</a>
+                <a href="/modelo/update/<%= modelo.id%>" >Update</a>
+            </td>
+
+        </tr>
+    <% } ) %>
+
+    </tbody>
+</table>
+
+<script>
+    async function delete_modelo(evt){
+        evt.preventDefault() // no sigas tu comportamiento por defecto
+        let id = $(this).data('modelo-id')
+        console.log('id',id)
+        try {
+            await $.ajax({
+                url: '/api/modelos/'  + id,
+                type: 'DELETE'
+            })
+            window.location.reload()
+
+        }catch (e) {
+            console.log(e)
+            console.log('Error' + e.status + " " + e.statusText)
+        }
+    }
+
+    $(document).ready(() =>{
+        $('.action_delete').click(delete_modelo)
+    });
+</script>
+
+</body>
+</html>
